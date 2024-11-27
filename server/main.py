@@ -1,5 +1,5 @@
 import motor.motor_asyncio
-import fastapi, typing, bson, pydantic
+import fastapi, typing, bson, pydantic, os
 from fastapi.middleware.cors import CORSMiddleware
 from bson import ObjectId
 
@@ -50,15 +50,19 @@ async def read_multiple():
 class Item(pydantic.BaseModel):
     name: str
     description: str
+    filename: str
+    args: list
+    kwargs: dict
 
 @api.post("/items")
-async def create_item(item: Item):
-    item_dict = item.model_dump()
-    result = await collection.insert_one(item_dict)
-    return await response(data={"id": str(result.inserted_id)}, message="Item created successfully")
+async def create(item: Item):
+    if f"{item.filename}.py" in os.listdir("tasks"):
+        item_dict = item.model_dump()
+        result = await collection.insert_one(item_dict)
+        return await response(data={"id": str(result.inserted_id)}, message="Item created successfully")
 
 @api.get("/items")
-async def read_items():
+async def read():
     items = []
     async for item in collection.find():
         item["_id"] = str(item["_id"])
@@ -66,7 +70,7 @@ async def read_items():
     return await response(data=items, message="Items retrieved successfully")
 
 @api.get("/items/{item_id}")
-async def read_item(item_id: str):
+async def read(item_id: str):
     item = await collection.find_one({"_id": ObjectId(item_id)})
     if item:
         item["_id"] = str(item["_id"])
@@ -75,7 +79,7 @@ async def read_item(item_id: str):
         return await response(data={}, success=False, message="Item not found", status_code=404)
 
 @api.put("/items/{item_id}")
-async def update_item(item_id: str, item: Item):
+async def update(item_id: str, item: Item):
     item_dict = item.model_dump()
     result = await collection.update_one({"_id": ObjectId(item_id)}, {"$set": item_dict})
     if result.modified_count:
@@ -84,9 +88,13 @@ async def update_item(item_id: str, item: Item):
         return await response(data={}, success=False, message="Item not found or not modified", status_code=404)
 
 @api.delete("/items/{item_id}")
-async def delete_item(item_id: str):
+async def delete(item_id: str):
     result = await collection.delete_one({"_id": ObjectId(item_id)})
     if result.deleted_count:
         return await response(data={"id": item_id}, message="Item deleted successfully")
     else:
         return await response(data={}, success=False, message="Item not found", status_code=404)
+    
+@api.post("/help")
+async def create(email, message):
+    print()

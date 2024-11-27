@@ -1,21 +1,19 @@
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-import UserListPage from './pages/UserListPage';
-import EditUserPage from './pages/EditUserPage';
-import NotFoundPage from './pages/NotFoundPage';
-import ItemListPage from './pages/ItemListPage';
-import EditItemPage from './pages/EditItemPage';
+import { Input } from "./components/Input";
+import { Form } from "./components/Form";
 
 const App = () => {
   return (
-    <Router>
-      <Routes>
-        <Route path="/" element={<UserListPage />} />
-        <Route path="/edit/:id/" element={<EditUserPage />} />
-        <Route path="/item/:id" element={<EditItemPage />} />
-        <Route path="/items" element={<ItemListPage />} />
-        <Route path="*" element={<NotFoundPage />} />
-      </Routes>
-    </Router>
+    <Form>
+      <Input id="name" type="text" placeholder="Digite seu nome">
+        Nome
+      </Input>
+      <Input id="email" type="email" placeholder="Digite seu email">
+        Email
+      </Input>
+      <Input id="password" type="password" placeholder="Digite sua senha">
+        Senha
+      </Input>
+    </Form>
   );
 };
 

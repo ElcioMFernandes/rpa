@@ -1,7 +1,14 @@
-export default function Home() {
+"use client";
+
+import Navbar from "@/components/Navbar";
+
+function Home() {
   return (
     <div>
-        <h1>Página principal da aplicação!</h1>
+      <Navbar />
+        <h1>Olá, você está na página principal da aplicação!</h1>
     </div>
   );
 }
+
+export default Home;

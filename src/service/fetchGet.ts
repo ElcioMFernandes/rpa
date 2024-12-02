@@ -31,10 +31,3 @@ const fetchGet = async (urlString: string, params: { [key: string]: any } = {}) 
     }
   }
 }
-fetchGet("https://jsonplaceholder.typicode.com/posts", { userId: 10 })
-  .then(data => console.log(data))
-  .catch(error => alert(`Error: ${error.message}\nDetails: ${error.details}`));
-
-fetchGet("https://jsonplaceholder.typicode.com/posts")
-  .then(data => console.log(data))
-  .catch(error => alert(`Error: ${error.message}\nDetails: ${error.details}`));

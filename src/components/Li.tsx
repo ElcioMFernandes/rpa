@@ -1,5 +1,6 @@
 interface LiProps {
     children: React.ReactNode;
+    className?: string;
   }
   
 function Li(props: LiProps) {

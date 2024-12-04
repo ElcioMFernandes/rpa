@@ -1,10 +1,6 @@
+import { UlProps } from "@/interface/UlProps";
 import React, { ReactNode } from "react";
 import Li from "./Li";
-
-interface UlProps {
-  children: ReactNode;
-  className?: string;
-}
 
 function Ul (props: UlProps) {
   return (

@@ -1,6 +1,7 @@
 import { ReactNode } from "react";
 
-export interface UlProps {
+export interface LiProps {
     children: ReactNode;
     className?: string;
   }
+  

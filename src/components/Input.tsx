@@ -1,14 +1,7 @@
 import Label from "./Label";
+import { InputProps } from "@/interface/InputProps";
 
-interface LabelProps {
-    type: string;
-    label?: string;
-    labelClassName?: string;
-    inputClassName?: string;
-    placeholder?: string;
-}
-
-function Input (props:LabelProps) {
+function Input (props:InputProps) {
     return (
         <>
         <Label className={props.labelClassName}>{props.label}</Label>
@@ -16,3 +9,5 @@ function Input (props:LabelProps) {
         </>
     );
 }
+
+export default Input;

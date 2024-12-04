@@ -1,10 +1,5 @@
 import { ReactNode } from 'react';
-
-interface LabelProps {
-  children: ReactNode;
-  htmlFor?: string;
-  className?: string;
-}
+import { LabelProps } from '@/interface/LabelProps';
 
 function Label(props: LabelProps) {
   return <label htmlFor={props.htmlFor}>{props.children}</label>;

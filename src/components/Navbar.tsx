@@ -1,18 +1,35 @@
-import Link from "next/link";
-import Ul from "./Ul";
+import {
+  HomeIcon,
+  QueueListIcon,
+  BriefcaseIcon,
+} from "@heroicons/react/24/outline"; // Heroicons modernos
 
-function Navbar() {
-  return (
-    <nav className="fixed top-0 left-0 w-full flex flex-row justify-between bg-indigo-900 text-white p-4 items-center shadow-2xl z-50">
-      <p className="font-bold select-none text-2xl cursor-default">RPA TUPER</p>
-      <Ul className="flex flex-row gap-4 text-white font-semibold">
-        <Link href="/">Home</Link>
-        <Link href="/jobs">Jobs</Link>
-        <Link href="/queue">Queue</Link>
-        <Link href="/helper">Helper</Link>
-      </Ul>
-    </nav>
-  );
+interface NavbarProps {
+  SearchEnabled: boolean;
 }
 
-export default Navbar;
+export const Navbar = () => {
+  return (
+    <nav className="flex flex-row p-2 w-full bg-black text-white justify-center shadow-neutral-300 shadow-xl">
+      <ul className="flex flex-row gap-6 items-center">
+        {/* Home */}
+        <li className="flex items-center gap-2 cursor-pointer select-none hover:text-gray-400">
+          <HomeIcon className="h-6 w-6" />
+          <span>Home</span>
+        </li>
+
+        {/* Queue */}
+        <li className="flex items-center gap-2 cursor-pointer select-none hover:text-gray-400">
+          <QueueListIcon className="h-6 w-6" />
+          <span>Queue</span>
+        </li>
+
+        {/* Jobs */}
+        <li className="flex items-center gap-2 cursor-pointer select-none hover:text-gray-400">
+          <BriefcaseIcon className="h-6 w-6" />
+          <span>Jobs</span>
+        </li>
+      </ul>
+    </nav>
+  );
+};

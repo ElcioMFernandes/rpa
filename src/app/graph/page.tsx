@@ -1,11 +1,11 @@
 import Frame from "@/components/Frame";
 
-const Home = () => {
+const Graph = () => {
   return (
     <Frame>
-      <p className="">Conteúdo</p>
+      <p className="">Graph</p>
     </Frame>
   );
 };
 
-export default Home;
+export default Graph;

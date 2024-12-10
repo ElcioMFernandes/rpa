@@ -1,11 +1,11 @@
 import Frame from "@/components/Frame";
 
-const Home = () => {
+const Queue = () => {
   return (
     <Frame>
-      <p className="">Conteúdo</p>
+      <p className="">Queue</p>
     </Frame>
   );
 };
 
-export default Home;
+export default Queue;

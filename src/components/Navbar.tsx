@@ -1,33 +1,53 @@
-import {
-  HomeIcon,
-  QueueListIcon,
-  BriefcaseIcon,
-} from "@heroicons/react/24/outline"; // Heroicons modernos
+"use client";
 
-interface NavbarProps {
-  SearchEnabled: boolean;
-}
+import Link from "next/link";
+import { usePathname } from "next/navigation";
 
 export const Navbar = () => {
+  const pathname = usePathname();
+
   return (
-    <nav className="flex flex-row p-2 w-full bg-black text-white justify-center shadow-neutral-300 shadow-xl">
-      <ul className="flex flex-row gap-6 items-center">
-        {/* Home */}
-        <li className="flex items-center gap-2 cursor-pointer select-none hover:text-gray-400">
-          <HomeIcon className="h-6 w-6" />
-          <span>Home</span>
+    <nav className="bg-stone-50 shadow-stone-300 shadow-lg">
+      <ul className="flex flex-row justify-center gap-10 text-xs py-3">
+        <li>
+          <Link
+            href="/"
+            className={`cursor-pointer hover:text-stone-900 ${
+              pathname === "/" ? "text-stone-900" : ""
+            }`}
+          >
+            Home
+          </Link>
         </li>
-
-        {/* Queue */}
-        <li className="flex items-center gap-2 cursor-pointer select-none hover:text-gray-400">
-          <QueueListIcon className="h-6 w-6" />
-          <span>Queue</span>
+        <li>
+          <Link
+            href="/jobs"
+            className={`cursor-pointer hover:text-stone-900 ${
+              pathname === "/jobs" ? "text-stone-900" : ""
+            }`}
+          >
+            Jobs
+          </Link>
         </li>
-
-        {/* Jobs */}
-        <li className="flex items-center gap-2 cursor-pointer select-none hover:text-gray-400">
-          <BriefcaseIcon className="h-6 w-6" />
-          <span>Jobs</span>
+        <li>
+          <Link
+            href="/queue"
+            className={`cursor-pointer hover:text-stone-900 ${
+              pathname === "/queue" ? "text-stone-900" : ""
+            }`}
+          >
+            Queue
+          </Link>
+        </li>
+        <li>
+          <Link
+            href="/graph"
+            className={`cursor-pointer hover:text-stone-900 ${
+              pathname === "/graph" ? "text-stone-900" : ""
+            }`}
+          >
+            Graph
+          </Link>
         </li>
       </ul>
     </nav>

@@ -4,13 +4,13 @@ export const Footer = () => {
       <hr className="border-t-1 border-gray-300 w-10/12 mx-auto" />
       <div className="flex flex-row justify-center gap-10">
         <ul className="flex flex-col gap-1">
-          <li>About</li>
+          <li className="cursor-pointer">About</li>
         </ul>
         <ul className="flex flex-col gap-1">
-          <li>Contact</li>
+          <li className="cursor-pointer">Contact</li>
         </ul>
         <ul className="flex flex-col gap-1">
-          <li>Help</li>
+          <li className="cursor-pointer">Help</li>
         </ul>
       </div>
     </footer>
